@@ -39,7 +39,7 @@ app.use('/api/v1/auth',authRoutes);
 app.use('/api/v1/category',categoryRoutes);
 app.use('/api/v1/product',productRoutes);
 
-//rest api /  for static files it's updated :
+//rest api   (for static files/deployment it's updated) :
 // app.get('/',(req,res)=>{
 //     res.send("<h1>Welcome to MERN E-commerce app</h1>")
 // })
@@ -47,8 +47,6 @@ app.use('*',function(req,res){
     res.sendFile(path.join(__dirname,'./client/build/index.html'));
 })
 
-
-//static files
 
 //PORT
 const PORT=process.env.PORT || 8080  // for node servers
