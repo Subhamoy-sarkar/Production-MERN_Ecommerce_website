@@ -32,23 +32,23 @@ const app=express();
 app.use(cors());
 app.use(express.json());
 app.use(morgan(`dev`));
+app.use(express.static(path.join(__dirname,'./client/build')));    //static files
 
 //routes
 app.use('/api/v1/auth',authRoutes);
 app.use('/api/v1/category',categoryRoutes);
 app.use('/api/v1/product',productRoutes);
 
-
-//rest api
-app.get('/',(req,res)=>{
-    res.send("<h1>Welcome to MERN E-commerce app</h1>")
-})
-
-//static files
-app.use(express.static(path.join(__dirname,'./client/build')));
-app.get('*',function(req,res){
+//rest api /  for static files it's updated :
+// app.get('/',(req,res)=>{
+//     res.send("<h1>Welcome to MERN E-commerce app</h1>")
+// })
+app.use('*',function(req,res){
     res.sendFile(path.join(__dirname,'./client/build/index.html'));
 })
+
+
+//static files
 
 //PORT
 const PORT=process.env.PORT || 8080  // for node servers
